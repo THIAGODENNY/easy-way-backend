@@ -1,11 +1,13 @@
-const serverless = require('serverless-http');
-const express = require('express');
-const mongoose = require('mongoose');
-const routes = require('./routes');
+const serverless = require("serverless-http");
+const express = require("express");
+const mongoose = require("mongoose");
+const routes = require("./routes");
+
+const keys = require("./config/keys");
 
 const app = express();
 
-const MONGODB_URI = `mongodb://localhost:27017/prontuario`;
+const MONGODB_URI = keys.MONGODB_URI;
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
