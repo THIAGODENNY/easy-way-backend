@@ -1,9 +1,9 @@
 const serverless = require("serverless-http");
 const express = require("express");
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
 const routes = require("./routes");
 
-const keys = require("./config/keys");
+//const keys = require("./config/keys");
 
 const app = express();
 
