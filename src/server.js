@@ -15,6 +15,9 @@ const MONGODB_URI = keys.MONGODB_URI;
 // });
 
 app.use(express.json());
+
+app.get('/', (req, res) => res.json({'message': 'ok'}))
+
 app.use(routes);
 
 module.exports.handler = serverless(app);
