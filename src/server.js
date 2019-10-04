@@ -9,10 +9,10 @@ const app = express();
 
 const MONGODB_URI = keys.MONGODB_URI;
 
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+// mongoose.connect(MONGODB_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
 
 app.use(express.json());
 app.use(routes);
