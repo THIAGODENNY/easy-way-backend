@@ -4,6 +4,6 @@ const HelloController = require('./controllers/HelloControllers');
 
 const routes = express.Router();
 
-routes.get('/', HelloController.index);
+routes.get('/hello', HelloController.index);
 
 module.exports = routes;
