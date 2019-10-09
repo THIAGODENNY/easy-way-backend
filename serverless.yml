@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: backend
+service: prontuario-backend
 #app: your-app-name
 #tenant: your-tenant-name
 
@@ -22,10 +22,11 @@ service: backend
 provider:
   name: aws
   runtime: nodejs10.x
-  environment:
+    environment:
     MONGODB_PASSWORD: ${env:MONGODB_PASSWORD}
     MONGODB_USER: ${env:MONGODB_USER}
     PROD: ${env:PROD}
+
 
 # you can overwrite defaults here
 #  stage: dev
@@ -65,9 +66,6 @@ functions:
     handler: handler.hello
     events:
       - http: GET hello
-
-plugins:
-  - serverless-offline
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
