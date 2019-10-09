@@ -1,5 +1,5 @@
 const express = require("express");
-const CidController = require("./CidController");
+const CidController = require("./controllers/CidController");
 
 const routes = express.Router();
 
