@@ -5,4 +5,4 @@ phases:
       - npm install
   build:
     commands:
-      - serverless deploy
+      - npx serverless deploy
