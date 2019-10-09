@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/THIAGODENNY/prontuario-backend#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "serverless": "^1.54.0",
+    "serverless-http": "^2.3.0",
     "spawn-sync": "^2.0.0",
     "try-thread-sleep": "^2.0.0"
   },
