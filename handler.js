@@ -1,9 +1,9 @@
 const serverless = require("serverless-http");
 const express = require("express");
+const routes = require("./src/routes");
+
 const app = express();
 
-app.get("/hello", function(req, res) {
-  res.json({ message: "Hello World!" });
-});
+app.use(routes);
 
 module.exports.handler = serverless(app);
