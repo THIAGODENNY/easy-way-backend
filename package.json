@@ -1,0 +1,22 @@
+{
+  "name": "prontuario-backend",
+  "version": "1.0.0",
+  "description": "https://mattwelke.com/2019/02/18/free-tier-serverless-mongodb-with-aws-lambda-and-mongodb-atlas.html",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/THIAGODENNY/prontuario-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/THIAGODENNY/prontuario-backend/issues"
+  },
+  "homepage": "https://github.com/THIAGODENNY/prontuario-backend#readme",
+  "dependencies": {
+    "serverless": "^1.54.0"
+  }
+}
