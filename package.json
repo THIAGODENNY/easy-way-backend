@@ -20,5 +20,8 @@
     "serverless": "^1.54.0",
     "spawn-sync": "^2.0.0",
     "try-thread-sleep": "^2.0.0"
+  },
+  "devDependencies": {
+    "serverless-offline": "^5.12.0"
   }
 }
