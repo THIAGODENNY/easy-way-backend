@@ -24,7 +24,7 @@ provider:
   runtime: nodejs10.x
   environment:
     PROD: ${env:PROD}
-    MONGO_URI: ${env:MONGODB_URI}
+    MONGO_URI: ${env:MONGO_URI}
 
 # you can overwrite defaults here
 #  stage: dev
