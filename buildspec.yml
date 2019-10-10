@@ -3,6 +3,9 @@ phases:
   install:
     commands:
       - npm install
+  test:
+    commands:
+      - npm test
   build:
     commands:
       - npx serverless deploy
