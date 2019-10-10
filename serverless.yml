@@ -23,9 +23,8 @@ provider:
   name: aws
   runtime: nodejs10.x
   environment:
-    MONGODB_PASSWORD: ${env:MONGODB_PASSWORD}
-    MONGODB_USER: ${env:MONGODB_USER}
     PROD: ${env:PROD}
+    MONGO_URI: ${env:MONGODB_URI}
 
 # you can overwrite defaults here
 #  stage: dev
