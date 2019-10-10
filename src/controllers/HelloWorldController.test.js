@@ -4,5 +4,5 @@ const [ req, res ] = [ httpMocks.createRequest(), httpMocks.createResponse() ];
 
 test('The message should be: { message: "Hello World from Controller Test Evans" }', async () => {
   const message = (await index(req, res))._getJSONData();
-  expect(message).toMatchObject({ message: "Hello World from Controller Test Evans" });
+  expect(message).toMatchObject({ message: "Hello World from Controller Test Evans with Tests" });
 });
