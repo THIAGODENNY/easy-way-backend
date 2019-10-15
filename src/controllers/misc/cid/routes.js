@@ -5,5 +5,6 @@ const routes = express.Router();
 
 routes.get("/", CidController.index);
 routes.get("/:uid", CidController.show);
+routes.get("/keywords/:uid", CidController.keyword);
 
 module.exports = routes;
