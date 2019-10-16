@@ -6,10 +6,23 @@ module.exports = {
     return res.json(cidFile);
   },
   async show(req, res) {
-    const { uid } = req.params;
-    return res.json(cidFile.filter(e => e.codigo === uid.toUpperCase()));
-  },
-  async keyword(req, res) {
+    const { id, keywords } = req.body;
+
+    if(!id && !keywords) {
+      return res.json({"message": "No id or keywords in body"});
+    }
+
+    if(id) {
+      return res.json(cidFile.filter(e => e.codigo === id.toUpperCase()));
+    }
+
+    if(keywords) {
+      return findByKeyword(req, res);
+    }
+  }
+};
+
+const findByKeyword = (req, res) => {
     var options = {
       includeScore: true,
       shouldSort: true,
@@ -21,7 +34,6 @@ module.exports = {
       keys: ["codigo", "nome"]
     };
     var fuse = new Fuse(cidFile, options);
-    const { uid } = req.params;
-    return res.json(fuse.search(uid).filter((e) => e.score < 0.2));
-  }
-};
+    const { keywords } = req.body;
+    return res.json(fuse.search(keywords).filter((e) => e.score < 0.2));
+}
