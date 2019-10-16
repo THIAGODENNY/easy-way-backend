@@ -4,7 +4,7 @@ const cidFile = require("./data/cid.json");
 
 test(`The result should be: "{"codigo": "Z71", "nome": "Pe"...`, async () => {
   const resultCid = (await show(
-    httpMocks.createRequest({ params: { uid: "Z71" } }),
+    httpMocks.createRequest({ body: { id: "Z71" } }),
     httpMocks.createResponse()
   ))._getJSONData();
   const cid = [
