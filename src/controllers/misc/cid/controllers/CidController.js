@@ -6,6 +6,12 @@ module.exports = {
     return res.json(cidFile);
   },
   async show(req, res) {
+    const { uid } = req.params;
+
+    if(uid) {
+      return res.json(cidFile.filter(e => e.codigo === uid.toUpperCase()));
+    }
+
     const { id, keywords } = req.body;
 
     if(!id && !keywords) {
