@@ -14,13 +14,13 @@ module.exports = {
       if(result.length > 0) {
         return res.json(result[0]);
       }
-      return res.json({result: "not found"});
+      return res.json({"message": "id not found"});
     }
 
     const { id, keywords } = req.body;
 
     if(!id && !keywords) {
-      return res.json({"message": "No id or keywords in body"});
+      return res.json({"message": "id or keywords in body"});
     }
 
     if(id) {
