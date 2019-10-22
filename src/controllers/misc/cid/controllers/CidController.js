@@ -9,7 +9,12 @@ module.exports = {
     const { uid } = req.params;
 
     if(uid) {
-      return res.json(cidFile.filter(e => e.codigo === uid.toUpperCase()));
+      const result = cidFile.filter(e => e.codigo === uid.toUpperCase());
+      console.log(result)
+      if(result.length > 0) {
+        return res.json(result[0]);
+      }
+      return res.json({result: "not found"});
     }
 
     const { id, keywords } = req.body;
