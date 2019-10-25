@@ -9,7 +9,8 @@ var getRawBody = require('raw-body')
 mongoose
   .connect(keys.MONGO_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useMongoClient: true
   })
   .catch(error => console.log(error));
 
