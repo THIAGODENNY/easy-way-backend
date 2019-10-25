@@ -7,7 +7,7 @@ npm install
 To run offline:
 
 ```
-npx sls offline
+npm run dev
 ```
 
 To deploy in Cloud:
