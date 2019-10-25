@@ -4,7 +4,8 @@
   "description": "https://mattwelke.com/2019/02/18/free-tier-serverless-mongodb-with-aws-lambda-and-mongodb-atlas.html",
   "main": "handler.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "npx sls offline start --skipCacheInvalidation"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,9 @@
     "serverless": "^1.54.0",
     "serverless-http": "^2.3.0",
     "spawn-sync": "^2.0.0",
-    "try-thread-sleep": "^2.0.0"
+    "try-thread-sleep": "^2.0.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^7.4.1"
   },
   "devDependencies": {
     "jest": "^24.9.0",
