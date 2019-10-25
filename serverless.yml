@@ -25,6 +25,7 @@ provider:
   environment:
     PROD: ${env:PROD}
     MONGO_URI: ${env:MONGO_URI}
+    SECRET: ${env:SECRET}
 
 # you can overwrite defaults here
 #  stage: dev
