@@ -5,6 +5,7 @@ function verifyToken(req, res, next) {
 
   // check header or url parameters or post parameters for token
   var token = req.headers['x-access-token'];
+  console.log(token);
   if (!token) 
     return res.status(403).send({ auth: false, message: 'No token provided.' });
 
@@ -15,7 +16,7 @@ function verifyToken(req, res, next) {
 
     // if everything is good, save to request for use in other routes
     req.userId = decoded.id;
-    next();
+    next(req, res);
   });
 
 }
