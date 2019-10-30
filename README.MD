@@ -10,12 +10,6 @@ To run offline:
 npm run dev
 ```
 
-To deploy in Cloud:
-
-```
-serverless deploy
-```
-
 Endpoint:
 
 ```
