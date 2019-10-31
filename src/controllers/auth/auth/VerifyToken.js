@@ -28,12 +28,13 @@ function verifyToken(req, res, next, profileAllowed) {
     User.findById(req.userId, function (err, user) {
       if (err) return res.status(500).send("There was a problem finding the user.");
       if (!user) return res.status(404).send("No user found.");
-      console.log(user.profile);
+
       const { profile } = user;
-      console.log(profile);
-      if(!profileAllowed.includes(profile)) {
+
+      if(!profileAllowed.includes(profile) && profile != "admin") {
         return res.status(500).send({ auth: false, message: 'Profile not Allowed.' });    
       }
+
       next(req, res);
     });
   });
