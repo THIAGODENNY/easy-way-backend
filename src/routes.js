@@ -7,7 +7,7 @@ const verifyToken = require("./controllers/auth/auth/VerifyToken");
 
 const routes = express.Router();
 
-routes.get("/hello", (req, res) => verifyToken(req, res, HelloWorldController.index));
+routes.get("/hello", (req, res) => verifyToken(req, res, HelloWorldController.index, ["medic"]));
 routes.use("/misc", misc);
 routes.use("/auth", auth);
 
