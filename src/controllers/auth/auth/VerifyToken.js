@@ -1,5 +1,6 @@
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('../../../../config/keys'); // get our config file
+var User = require('../user/User');
 
 function verifyToken(req, res, next) {
 
@@ -16,6 +17,11 @@ function verifyToken(req, res, next) {
 
     // if everything is good, save to request for use in other routes
     req.userId = decoded.id;
+    User.findById(req.userId, function (err, user) {
+      if (err) return res.status(500).send("There was a problem finding the user.");
+      if (!user) return res.status(404).send("No user found.");
+      console.log(user.profile);
+    });
     next(req, res);
   });
 
