@@ -18,6 +18,22 @@ ANY - https://ey7li2szf0.execute-api.us-east-1.amazonaws.com/dev/{proxy+}
 ```
 
 ```
+Misc Endpoint
+
+@get/hello
+
+@get/misc/cid/
+@get/misc/cid/:uid
+@post/misc/cid
+
+body example:
+{
+    id: "A00",
+    keywords: "fooBar"
+}
+```
+
+```
 Auth Endpoint:
 
 @post/auth/jwt/admin/register
@@ -34,5 +50,6 @@ body example:
 
 header token example:
 
+Content-Type = application/json
 x-access-token = fooBar123
 ```
