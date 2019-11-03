@@ -30,5 +30,18 @@ module.exports = {
       
       return res.json({id: uid});     
     });
+  },
+  async update(req, res) {
+    const { uid } = req.params;
+    const schedulling = {
+      specialty: req.body.specialty,
+      patient: req.body.patient,
+      medic: req.body.medic,
+      date: req.body.date
+    }
+    Schedulling.findByIdAndUpdate({_id: uid}, schedulling, {new: true}, function(error, model) {
+      if(error) return res.json(error);
+      return res.json(model);
+    });
   }
 };
