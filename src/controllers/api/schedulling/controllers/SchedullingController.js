@@ -20,13 +20,10 @@ module.exports = {
   async destroy(req, res) {
     const { uid } = req.params;
     console.log(req.params);
-    Schedulling.remove({ _id: uid }, (err) => {
-      if (!err) {
-        return res.json({ message: "ok" });
-      }
-      else {
-        return res.json({ message: "error" });
-      }
+    Schedulling.findByIdAndRemove({_id: uid}, function(error) {
+      if(error) return res.json(error);
+      
+      return res.json({id: uid});     
     });
   }
 };
