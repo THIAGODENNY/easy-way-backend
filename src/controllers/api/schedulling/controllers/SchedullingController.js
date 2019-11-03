@@ -5,6 +5,11 @@ module.exports = {
     const schedulling = await Schedulling.find({});
     return res.json(schedulling);
   },
+  async show(req, res) {
+    const { uid } = req.params;
+    const schedulling = await Schedulling.findOne({_id: uid});
+    return res.json(schedulling);
+  },
   async store(req, res) {
     const { specialty, patient, medic, date } = req.body;
 
