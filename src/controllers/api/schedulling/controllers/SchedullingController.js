@@ -18,12 +18,15 @@ module.exports = {
     return res.json(schedulling);
   },
   async destroy(req, res) {
-    const { id } = req.params;
+    const { uid } = req.params;
     console.log(req.params);
-    await Schedulling.find({ _id: id })
-      .remove()
-      .exec();
-
-    return res.json({ message: "ok" });
+    Schedulling.remove({ _id: uid }, (err) => {
+      if (!err) {
+        return res.json({ message: "ok" });
+      }
+      else {
+        return res.json({ message: "error" });
+      }
+    });
   }
 };
