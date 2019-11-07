@@ -40,7 +40,7 @@ router.post('/login', function(req, res) {
 
 router.post('/register', function(req, res) {
   const { profile } = req.body;
-  if(profile && profile != 'patient') return res.status(500).send({ message: 'Just profile patient allowed'})
+  if(profile && profile != 'patient') return res.status(500).send({ message: 'Only patient profile is allowed'})
 
   var hashedPassword = bcrypt.hashSync(req.body.password, 8);
 
