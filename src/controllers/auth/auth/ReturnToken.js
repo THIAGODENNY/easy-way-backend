@@ -37,7 +37,8 @@ function returnToken(req, res) {
           auth: true, 
           name: user.name, 
           email: user.email, 
-          profile: user.profile 
+          profile: user.profile,
+          cpf: user.cpf
         }
       )
     });
