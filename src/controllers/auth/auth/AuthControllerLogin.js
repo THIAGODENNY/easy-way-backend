@@ -38,6 +38,33 @@ router.post('/login', function(req, res) {
 
 });
 
+router.post('/register', function(req, res) {
+  const { profile } = req.body;
+  if(profile && profile != 'patient') return res.status(500).send({ message: 'Just profile patient allowed'})
+
+  var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+
+  User.create({
+    name : req.body.name,
+    email : req.body.email,
+    password : hashedPassword,
+    profile: 'patient'
+  }, 
+  function (err, user) {
+    if (err) return res.status(500).send({message: err});
+
+    // if user is registered without errors
+    // create a token
+    var token = jwt.sign({ id: user._id }, config.secret, {
+      expiresIn: 86400 // expires in 24 hours
+    });
+
+    res.status(200).send({ auth: true, token: token });
+  });
+
+});
+
+
 router.get('/logout', function(req, res) {
   res.status(200).send({ auth: false, token: null });
 });
