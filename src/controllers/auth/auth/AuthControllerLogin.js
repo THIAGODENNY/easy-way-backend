@@ -3,6 +3,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 
 var VerifyToken = require('./VerifyToken');
+var ReturnToken = require('./ReturnToken');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
@@ -39,6 +40,10 @@ router.post('/login', function(req, res) {
 
 router.get('/logout', function(req, res) {
   res.status(200).send({ auth: false, token: null });
+});
+
+router.get('/me', (req, res) => {
+  ReturnToken(req, res);
 });
 
 module.exports = router;
