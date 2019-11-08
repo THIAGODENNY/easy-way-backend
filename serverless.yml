@@ -26,6 +26,8 @@ provider:
     PROD: ${env:PROD}
     MONGO_URI: ${env:MONGO_URI}
     SECRET: ${env:SECRET}
+    ACCOUNTSID: ${env:ACCOUNTSID}
+    AUTHTOKEN: ${env:AUTHTOKEN}
 
 # you can overwrite defaults here
 #  stage: dev
