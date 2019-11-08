@@ -3,6 +3,6 @@ const SmsController = require("./controller/SmsController");
 
 const routes = express.Router();
 
-routes.get("/", SmsController.index);
+routes.post("/", SmsController.generateKey);
 
 module.exports = routes;

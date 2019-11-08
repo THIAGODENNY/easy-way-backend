@@ -9,7 +9,7 @@ module.exports = {
         let key = Math.floor(Math.random() * 90000) + 10000;
         const message = 'Your key from Vida Saudável : ' + key;
         client.messages
-            .create({body: message, from: from, to: '+5519997835895'})
+            .create({body: message, from: from, to: 'phone number to fill'})
             .then(message => console.log(message.sid, message));
         return res.send({message: 'ok'});
     }    
