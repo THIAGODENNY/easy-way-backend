@@ -26,8 +26,9 @@ provider:
     PROD: ${env:PROD}
     MONGO_URI: ${env:MONGO_URI}
     SECRET: ${env:SECRET}
-    ACCOUNTSID: ${env:ACCOUNTSID}
-    AUTHTOKEN: ${env:AUTHTOKEN}
+    SMS_ACCOUNTSID: ${env:SMS_ACCOUNTSID}
+    SMS_AUTHTOKEN: ${env:SMS_AUTHTOKEN}
+    SMS_PHONE: ${env:SMS_PHONE}
 
 # you can overwrite defaults here
 #  stage: dev
