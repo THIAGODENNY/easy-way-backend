@@ -12,6 +12,6 @@ module.exports = {
         client.messages
             .create({body: message, from: from, to: phone})
             .then(message => console.log(message.sid, message));
-        return res.send({message: 'ok'});
+        return res.send({message: 'sent to ' + phone});
     }    
 }
