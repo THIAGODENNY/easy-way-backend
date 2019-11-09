@@ -10,7 +10,7 @@ module.exports = {
         const { phone } = req.body;
         const message = 'Your key from Vida Saudável : ' + key;
         client.messages
-            .create({body: message, from: from, to: phone})
+            .create({body: message, from: 'whatsapp:' + from, to: 'whatsapp:' + phone})
             .then(message => console.log(message.sid, message));
         return res.send({message: 'sent to ' + phone});
     }    
