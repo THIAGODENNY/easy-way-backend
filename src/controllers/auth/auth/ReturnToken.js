@@ -35,10 +35,12 @@ function returnToken(req, res) {
       return res.status(200).send(
         {
           auth: true, 
+          id: user.id,
           name: user.name, 
           email: user.email, 
           profile: user.profile,
-          cpf: user.cpf
+          cpf: user.cpf,
+          record: user.record
         }
       )
     });
