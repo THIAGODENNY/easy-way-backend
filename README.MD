@@ -20,7 +20,7 @@ ANY - https://ey7li2szf0.execute-api.us-east-1.amazonaws.com/dev/{proxy+}
 ```
 Misc Endpoint
 
-@get/hello (two-factor-auth here, request a key in @post/misc/email endpoint)
+@get(/hello) (two-factor-auth here, request a key in @post/misc/email endpoint)
 Header example:
     Content-Type = application/json
     x-access-token = fooBar123
@@ -31,9 +31,9 @@ Response:
         message: "Hello World from Controller Test Evans with Tests"
     }
 
-@get/misc/cid/
-@get/misc/cid/:uid
-@post/misc/cid
+@get(/misc/cid/)
+@get(/misc/cid/:uid)
+@post(/misc/cid)
 
 body example:
     {
@@ -46,9 +46,9 @@ body example:
 ```
 Auth Endpoint:
 
-@post/auth/jwt/admin/register
-@post/auth/jwt/register (only patient profile allowed here)
-@post/auth/jwt/login
+@post(/auth/jwt/admin/register)
+@post(/auth/jwt/register) (only patient profile allowed here)
+@post(/auth/jwt/login)
 
 body example:
     {
@@ -75,7 +75,7 @@ Response:
 ```
 Two-Factor request for key:
 
-@post/misc/email
+@post(/misc/email)
 
 header token example:
 
@@ -99,17 +99,23 @@ Header of Endpoints with Two-Factor authentication:
 ```
 Records Endpoint:
 
-@get/api/record
+@get(/api/record)
 return an arraylist of all records
 
-@get/api/record/:id
+@get(/api/record/:id)
 get record by id
 
-@post/api/record
+@post(/api/record)
 post an record to the database
 
-@put/api/record/:id
+@put(/api/record/:id)
 update an record by the json posted
+
+@delete(/api/record/:id)
+delete an record by id
+
+:id example:
+5dbf5815c8a4fa1d8855123c
 
 body example:
 {
@@ -121,6 +127,37 @@ body example:
   "diagnosis": "passa bem",
   "medicNotes": "tomar remedio de 2 em 2 horas",
   "prescription": ["rivotril"]
+}
+
+```
+
+```
+Schedule Endpoint:
+
+@get(/api/schedulling)
+return an arraylist of all schedules
+
+@get(/api/schedulling/:id)
+get schedule by id
+
+@post(/api/schedulling)
+post an schedule to the database
+
+@put(/api/schedulling/:id)
+update an schedule by the json posted
+
+@delete(/api/schedulling/:id)
+delete an schedule by id
+
+:id example:
+5dbda8baf9fe3d126573b15b
+
+body example:
+{
+	"specialty": "String1",
+  "patient": "String1",
+  "medic": "String1",
+  "date": "String1"
 }
 
 ```
