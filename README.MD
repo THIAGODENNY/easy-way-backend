@@ -45,11 +45,32 @@ body example:
 "name": "foo bar",
 "email": "foo@bar.com",
 "password": "fooBar",
-"profile": "fooBar"
+"profile": "fooBar",
+"records": "fooBar",
+"cpf": "fooBar",
 }
 
 header token example:
 
 Content-Type = application/json
 x-access-token = fooBar123
+```
+
+```
+Two-Factor request for key:
+
+@post/misc/email
+
+header token example:
+
+Content-Type = application/json
+x-access-token = fooBar123
+```
+
+```
+Header of Endpoints with Two-Factor authentication:
+
+Content-Type = application/json
+x-access-token = fooBar123
+two-auth-key = 12345
 ```
