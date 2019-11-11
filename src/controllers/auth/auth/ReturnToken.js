@@ -40,7 +40,8 @@ function returnToken(req, res) {
           email: user.email, 
           profile: user.profile,
           cpf: user.cpf,
-          record: user.record
+          record: user.record,
+          url: user.url
         }
       )
     });

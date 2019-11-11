@@ -7,6 +7,7 @@ var UserSchema = new mongoose.Schema({
   cpf: {type: String, unique: true},
   key: String,
   phone: String,
-  record: String
+  record: String,
+  url: String
 });
 module.exports = mongoose.model('User', UserSchema);
