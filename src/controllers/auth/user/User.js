@@ -5,6 +5,9 @@ var UserSchema = new mongoose.Schema({
   password: String,
   profile: String,
   cpf: {type: String, unique: true},
+  key: String,
+  phone: String,
+  record: String,
   url: String
 });
 module.exports = mongoose.model('User', UserSchema);

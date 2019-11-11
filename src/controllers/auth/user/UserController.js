@@ -13,7 +13,8 @@ router.post('/', function (req, res) {
             name : req.body.name,
             email : req.body.email,
             password : req.body.password,
-            profile: req.body.profile
+            profile: req.body.profile,
+            record: req.body.record
         }, 
         function (err, user) {
             if (err) return res.status(500).send("There was a problem adding the information to the database.");

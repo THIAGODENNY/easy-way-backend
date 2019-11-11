@@ -26,6 +26,7 @@ provider:
     PROD: ${env:PROD}
     MONGO_URI: ${env:MONGO_URI}
     SECRET: ${env:SECRET}
+    SENDGRID_API_KEY: ${env:SENDGRID_API_KEY}
 
 # you can overwrite defaults here
 #  stage: dev
