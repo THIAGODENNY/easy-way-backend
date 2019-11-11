@@ -4,6 +4,7 @@ var UserSchema = new mongoose.Schema({
   email: {type: String, unique : true, required : true },
   password: String,
   profile: String,
-  cpf: {type: String, unique: true}
+  cpf: {type: String, unique: true},
+  url: String
 });
 module.exports = mongoose.model('User', UserSchema);
