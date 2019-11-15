@@ -154,7 +154,7 @@ delete an schedule by id
 
 body example:
 {
-	"specialty": "String1",
+	"specialty": "cardio",
   "patient": "String1",
   "medic": "String1",
   "date": "String1"

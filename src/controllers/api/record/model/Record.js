@@ -8,7 +8,8 @@ var RecordSchema = new mongoose.Schema({
   symptoms: Array,
   diagnosis: String,
   medicNotes: String,
-  prescription: Array
+  prescription: Array,
+  news: Boolean
 });
 
 module.exports = mongoose.model('Record', RecordSchema);
