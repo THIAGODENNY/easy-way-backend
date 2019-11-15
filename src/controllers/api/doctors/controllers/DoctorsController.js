@@ -9,13 +9,13 @@ module.exports = {
     const doctors = await Users.find({'profile': 'medic'});
     console.log(doctors);
     return res.json(doctors.map((e) => {
-      return {
-        specialty: e.specialty,
-        name: e.name,
-        profile: e.profile,
-        email: e.email
-      }
-    } 
+        return {
+          specialty: e.specialty,
+          name: e.name,
+          profile: e.profile,
+          email: e.email
+        }
+      } 
     ));
   },
   async store(req, res) {
