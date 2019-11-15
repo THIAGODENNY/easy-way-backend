@@ -1,6 +1,5 @@
 const Record = require("../../record/model/Record");
-const Schedule = require("../../schedulling/model/Schedulling")
-const circularJson = require("circular-json")
+const Schedule = require("../../schedulling/model/Schedulling");
 
 module.exports = {
   async showSchedullingsByRecordId(req, res) {
