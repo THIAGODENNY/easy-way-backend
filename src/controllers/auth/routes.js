@@ -12,7 +12,8 @@ var UserController = require(__root + 'user/UserController');
 routes.use('/users', UserController);
 
 var AuthController = require(__root + 'auth/AuthController');
-routes.use('/jwt/admin', (req, res) => verifyToken(req, res, AuthController, "admin"));
+//routes.use('/jwt/admin', (req, res) => verifyToken(req, res, AuthController, "admin"));
+routes.use('/jwt/admin', AuthController);
 var AuthControllerLogin = require(__root + 'auth/AuthControllerLogin');
 routes.use('/jwt', AuthControllerLogin);
 
