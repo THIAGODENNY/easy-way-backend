@@ -23,7 +23,8 @@ router.post('/register', function(req, res) {
     password : hashedPassword,
     profile: req.body.profile,
     cpf: req.body.cpf,
-    record: req.body.record
+    record: req.body.record,
+    specialty: req.body.specialty
   }, 
   function (err, user) {
     if (err) return res.status(500).send({ message: err });
