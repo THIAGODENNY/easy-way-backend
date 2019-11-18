@@ -10,10 +10,11 @@ module.exports = {
     console.log(doctors);
     return res.json(doctors.map((e) => {
         return {
-          specialty: e.specialty,
+          id: e.id,
           name: e.name,
-          profile: e.profile,
-          email: e.email
+          email: e.email,
+          profile: e.profile,        
+          specialty: e.specialty
         }
       } 
     ));
