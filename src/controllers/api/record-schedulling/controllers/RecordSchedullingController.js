@@ -1,6 +1,6 @@
 const Record = require("../../record/model/Record");
 const Schedule = require("../../schedulling/model/Schedulling")
-const circularJson = require("circular-json")
+// const circularJson = require("circular-json")
 
 module.exports = {
   async showSchedullingsByRecordId(req, res) {
@@ -13,5 +13,32 @@ module.exports = {
         }
       })
     );
+  },
+  async showSchedullingsByMonthYear(req, res) {
+    const { id , month, year } = req.params;
+    if (id){
+      try{
+      const record = await Record.findOne({ _id: id });
+      return res.json(
+        await Schedule.find({
+          '_id': {
+            $in: record.schedules
+          },
+          'date': {
+            "$regex": month+"/"+year, 
+            "$options": "i"
+          }
+        })
+      );}
+      catch{return res.json({ "message": "Record not found!"})}
+    }
+    return res.json(
+      await Schedule.find({
+        'date': {
+          "$regex": month+"/"+year, 
+          "$options": "i"
+        }
+      })
+    )
   }
 };
