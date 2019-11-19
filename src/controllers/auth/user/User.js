@@ -8,6 +8,7 @@ var UserSchema = new mongoose.Schema({
   key: String,
   phone: String,
   record: String,
-  url: String
+  url: String,
+  specialty: String
 });
 module.exports = mongoose.model('User', UserSchema);
