@@ -14,7 +14,8 @@ module.exports = {
         name: e.name,
         email: e.email,
         profile: e.profile,        
-        specialty: e.specialty
+        specialty: e.specialty,
+        url: e.url
       }
     } 
     ));
