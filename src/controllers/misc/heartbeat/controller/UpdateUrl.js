@@ -14,13 +14,15 @@ module.exports = {
     }
 }
 
-async function getUser(req, res, id, url, next) {       
+async function getUser(req, res, id, url, next) {
+    User.updateMany({url:url}, {url: ''}, function() {
         User.findById(id, function (err, user) {
-            User.findByIdAndUpdate(user.id, { url: url }, { new: true }, function (err, user) {
-                if (err) return res.status(500).send("There was a problem updating the user.");
-            });
+            if(user) 
+              User.findByIdAndUpdate(user.id, { url: url }, { new: true }, function (err, user) {
+                  if (err) return res.status(500).send("There was a problem updating the user.");
+                  next(user);
+              });
             if (!user) return res.status(404).send({ auth: false, message: "No user found." });
-            console.log(user);
-            next(user);
         });
+    });       
 }
