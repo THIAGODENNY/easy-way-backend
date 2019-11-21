@@ -8,7 +8,7 @@ module.exports = {
   async show(req, res) {
     const { id } = req.params;
     const { limit } = req.query;
-    const heartBeatLog = await HeartBeatLog.find({pid: id}).limit(parseInt(limit));
+    const heartBeatLog = await HeartBeatLog.find({pid: id}).limit(parseInt(limit)).sort({date:-1});
     return res.json(heartBeatLog);
   },
 
