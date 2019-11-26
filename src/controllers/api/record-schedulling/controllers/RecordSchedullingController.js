@@ -57,8 +57,8 @@ module.exports = {
           }
         })
         .sort((a , b) => {
-          a = moment(a.date, ['HH:mm DD/MM/YYYY']).format;
-          b = moment(b.date, ['HH:mm DD/MM/YYYY']).format;
+          a = moment(a.date, ['HH:mm DD/MM/YYYY']).format();
+          b = moment(b.date, ['HH:mm DD/MM/YYYY']).format();
           return a > b ? -1 : a < b ? 1 : 0;
         })
       });
