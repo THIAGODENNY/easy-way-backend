@@ -54,8 +54,8 @@ module.exports = {
             "$regex": month+"/"+year, 
             "$options": "i"
           }
-        })}
-      ).sort({ date: -1});}
+        }).sort({ date: -1})}
+      );}
       catch{return res.json({ "message": "Record not found!"})}
     }
     return res.json({"schedules":
