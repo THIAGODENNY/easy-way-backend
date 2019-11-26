@@ -21,7 +21,7 @@ module.exports = {
       return res.send(await axios.get(url, {
           responseType: 'arraybuffer'
         })
-        .then(response => Buffer.from(response.data, 'binary').toString('base64'))
+        .then(response => Buffer.from(response.data, 'binary'))
       );
     }
     return res.json({result: heartBeatLog});
