@@ -1,6 +1,5 @@
 const Record = require("../../record/model/Record");
 const Schedule = require("../../schedulling/model/Schedulling");
-const moment = require('moment');
 
 module.exports = {
   async showSchedullingsByRecordId(req, res) {
@@ -46,7 +45,7 @@ module.exports = {
     if (id){
       try{
       const record = await Record.findOne({ _id: id });
-      return res.json({"schedulessss":
+      return res.json({"schedules":
         await Schedule.find({
           '_id': {
             $in: record.schedules
@@ -55,13 +54,8 @@ module.exports = {
             "$regex": month+"/"+year, 
             "$options": "i"
           }
-        })
-      }).sort((a , b) => {
-        a = moment(a.date, ['HH:mm DD/MM/YYYY']).format();
-        b = moment(b.date, ['HH:mm DD/MM/YYYY']).format();
-        return a > b ? -1 : a < b ? 1 : 0;
-      });
-    }
+        })}
+      );}
       catch{return res.json({ "message": "Record not found!"})}
     }
     return res.json({"schedules":
@@ -70,6 +64,10 @@ module.exports = {
           "$regex": month+"/"+year, 
           "$options": "i"
         }
+      }).sort((a , b) => {
+        a = moment(a.date, ['HH:mm DD/MM/YYYY']).format();
+        b = moment(b.date, ['HH:mm DD/MM/YYYY']).format();
+        return a > b ? -1 : a < b ? 1 : 0;
       })}
     )
   }
