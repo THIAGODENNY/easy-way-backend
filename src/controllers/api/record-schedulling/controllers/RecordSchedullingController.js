@@ -46,7 +46,7 @@ module.exports = {
     if (id){
       try{
       const record = await Record.findOne({ _id: id });
-      return res.json({"schedules":
+      return res.json({"schedulessss":
         await Schedule.find({
           '_id': {
             $in: record.schedules
@@ -56,11 +56,10 @@ module.exports = {
             "$options": "i"
           }
         })
-        .sort((a , b) => {
-          a = moment(a.date, ['HH:mm DD/MM/YYYY']).format();
-          b = moment(b.date, ['HH:mm DD/MM/YYYY']).format();
-          return a > b ? -1 : a < b ? 1 : 0;
-        })
+      }).sort((a , b) => {
+        a = moment(a.date, ['HH:mm DD/MM/YYYY']).format();
+        b = moment(b.date, ['HH:mm DD/MM/YYYY']).format();
+        return a > b ? -1 : a < b ? 1 : 0;
       });
     }
       catch{return res.json({ "message": "Record not found!"})}
