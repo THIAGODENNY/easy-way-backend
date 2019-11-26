@@ -13,12 +13,7 @@ module.exports = {
                                     .limit(parseInt(limit))
                                     .sort({date:-1});
     if(graph) {
-      const dates = heartBeatLog.map(e => '"|"');
-      const heartBeat = heartBeatLog.map(e => e.heartbeat);
-
-      const url = `https://quickchart.io/chart?width=500&height=300&c={type:'line',data: {labels: [${dates.join(',')}],datasets: [{label: 'Heart Beat',data: [${heartBeat}]}]}}`;
-
-      return res.redirect(url);
+     return returnGraph(res, heartBeatLog);
     }
     return res.json({result: heartBeatLog});
   },
@@ -44,3 +39,12 @@ module.exports = {
   async update(req, res) {
   }
 };
+
+function returnGraph(res, heartBeatLog) {
+  const dates = heartBeatLog.map(() => '"|"');
+  const heartBeat = heartBeatLog.map(e => e.heartbeat);
+
+  const url = `https://quickchart.io/chart?width=500&height=300&c={type:'line',data: {labels: [${dates.join(',')}],datasets: [{label: 'Heart Beat',data: [${heartBeat}]}]}}`;
+
+  return res.redirect(url);
+}
