@@ -1,5 +1,6 @@
 const Record = require("../../record/model/Record");
 const Schedule = require("../../schedulling/model/Schedulling");
+const moment = require('moment');
 
 module.exports = {
   async showSchedullingsByRecordId(req, res) {
@@ -56,8 +57,8 @@ module.exports = {
           }
         })
         .sort((a , b) => {
-          a = new Date(a.date);
-          b = new Date(b.date);
+          a = moment(a.date, ['HH:mm DD/MM/YYYY']).format;
+          b = moment(b.date, ['HH:mm DD/MM/YYYY']).format;
           return a > b ? -1 : a < b ? 1 : 0;
         })
       });
