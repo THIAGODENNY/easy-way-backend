@@ -18,11 +18,7 @@ module.exports = {
 
       const url = `https://quickchart.io/chart?width=500&height=300&c={type:'line',data: {labels: [${dates.join(',')}],datasets: [{label: 'Heart Beat',data: [${heartBeat}]}]}}`;
 
-      return res.send(await axios.get(url, {
-          responseType: 'arraybuffer'
-        })
-        .then(response => Buffer.from(response.data, 'binary'))
-      );
+      return res.redirect(url);
     }
     return res.json({result: heartBeatLog});
   },
