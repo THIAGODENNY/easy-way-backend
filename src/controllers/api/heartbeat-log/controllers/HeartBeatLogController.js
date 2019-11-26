@@ -17,21 +17,12 @@ module.exports = {
       const heartBeat = heartBeatLog.map(e => e.heartbeat);
 
       const url = `https://quickchart.io/chart?width=500&height=300&c={type:'line',data: {labels: [${dates.join(',')}],datasets: [{label: 'Heart Beat',data: [${heartBeat}]}]}}`;
-      const url1 = "https://jsonplaceholder.typicode.com/todos/1";
-      const config = {
-        method: 'GET',
-        headers: {
-          "Content-Type": 'text/plain'
-        },
-        url: url
-      }
-      return res.json(await axios(config)
-        .then(function (response) {
-          return { result: {image: response.data}};
+
+      return res.send(await axios.get(url, {
+          responseType: 'arraybuffer'
         })
-        .catch(function (error) {
-          return { result: {image: error }};
-        }));
+        .then(response => Buffer.from(response.data, 'binary').toString('base64'))
+      );
     }
     return res.json({result: heartBeatLog});
   },
