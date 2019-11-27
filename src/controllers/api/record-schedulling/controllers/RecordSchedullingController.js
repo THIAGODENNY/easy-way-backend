@@ -60,16 +60,17 @@ module.exports = {
       catch{return res.json({ "message": "Record not found!"})}
     }
     return res.json({"schedules":
-        [ await Schedule.find({
+        (await Schedule.find({
           'date': {
             "$regex": month+"/"+year, 
             "$options": "i"
           }
-        }) ].sort((a , b) => {
+        }))
+        .sort((a , b) => {
           a = moment(a.date, ['HH:mm DD/MM/YYYY']).format();
           b = moment(b.date, ['HH:mm DD/MM/YYYY']).format();
           return a > b ? -1 : a < b ? 1 : 0;
-        })[0]
+        })
       }
     )
   }
