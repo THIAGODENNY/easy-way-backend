@@ -9,10 +9,16 @@ var getRawBody = require('raw-body')
 mongoose
   .connect(keys.MONGO_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useMongoClient: true
+    useUnifiedTopology: true
   })
-  .catch(error => console.log(error));
+  .catch(error => { throw error });
+
+const errorHandling = (err, req, res, next) => {
+  res.status(500).json({
+    errors: [{ message: 'An internal server error has occurred.' }],
+    error: err
+  });
+};
 
 const app = express();
 
@@ -31,5 +37,7 @@ app.use(function (req, res, next) {
     next()
   })
 });
+
+app.use(errorHandling);
 
 module.exports.handler = serverless(app);
