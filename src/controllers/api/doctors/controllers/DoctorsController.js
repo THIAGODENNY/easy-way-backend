@@ -29,7 +29,7 @@ module.exports = {
     
   },
   async showBySpecialty(req, res){
-    const { specialty } = req.query;
+    const { specialty } = req.params;
     return res.json({"result": 
       doctors.find({
         "specialty": specialty
