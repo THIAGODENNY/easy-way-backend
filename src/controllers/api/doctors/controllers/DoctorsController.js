@@ -27,5 +27,13 @@ module.exports = {
   },
   async update(req, res) {
     
+  },
+  async showBySpecialty(req, res){
+    const { specialty } = req.query;
+    return res.json({"result": 
+      doctors.find({
+        "specialty": specialty
+      })
+    });
   }
 };
