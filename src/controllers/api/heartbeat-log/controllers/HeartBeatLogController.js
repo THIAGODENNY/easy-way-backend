@@ -21,7 +21,7 @@ module.exports = {
       date: HeartBeatLog.date,
       heartbeat: heartBeat.heartbeat,
       url: HeartBeatLog.url,
-      brdate: moment(HeartBeatLog.date, ['DD:MM:YYYY'])
+      brdate: moment(HeartBeatLog.date, ['DD:MM:YYYY']).format()
     });
   },
 
