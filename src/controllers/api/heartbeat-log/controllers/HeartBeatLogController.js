@@ -1,6 +1,6 @@
 const HeartBeatLog = require("../model/HeartBeatLog");
 const User = require("../../../auth/user/User");
-const axios = require("axios");
+const moment = require('moment');
 
 module.exports = {
   async index(req, res) {
@@ -15,7 +15,14 @@ module.exports = {
     if(graph) {
      return returnGraph(res, heartBeatLog.reverse());
     }
-    return res.json(heartBeatLog);
+    return res.json({
+      id: heartBeatLog.id,
+      pid: heartBeatLog.pid,
+      date: HeartBeatLog.date,
+      heartbeat: heartBeat.heartbeat,
+      url: HeartBeatLog.url,
+      brdate: moment(HeartBeatLog.date, ['DD:MM:YYYY'])
+    });
   },
 
   async store(req, res) {
