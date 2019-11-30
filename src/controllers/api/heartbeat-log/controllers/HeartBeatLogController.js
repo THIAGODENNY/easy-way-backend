@@ -15,7 +15,7 @@ module.exports = {
     if(graph) {
      return returnGraph(res, heartBeatLog);
     }
-    return res.json({result: heartBeatLog});
+    return res.json(heartBeatLog);
   },
 
   async store(req, res) {
@@ -29,7 +29,7 @@ module.exports = {
         heartbeat: heartbeat,
         url: url
       });     
-      return res.json({result: heartBeatLog});
+      return res.json(heartBeatLog);
     });
   },
 
