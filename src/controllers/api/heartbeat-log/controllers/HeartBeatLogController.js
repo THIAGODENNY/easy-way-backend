@@ -13,7 +13,7 @@ module.exports = {
                                     .limit(parseInt(limit))
                                     .sort({date:-1});
     if(graph) {
-     return returnGraph(res, heartBeatLog);
+     return returnGraph(res, heartBeatLog.reverse());
     }
     return res.json(heartBeatLog);
   },
