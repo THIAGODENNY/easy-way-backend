@@ -28,11 +28,13 @@ module.exports = {
   async update(req, res) {
     
   },
-  async showBySpecialty(req, res){
+  async showBySpecialty(req, res){  
     const { specialty } = req.params;
+    console.log(req.params);
     return res.json({"result": 
-      doctors.find({
-        "specialty": specialty
+      await Users.find({
+        "specialty": specialty,
+        "profile": "medic"
       })
     });
   }
