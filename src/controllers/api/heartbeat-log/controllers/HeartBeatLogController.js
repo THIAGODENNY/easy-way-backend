@@ -18,10 +18,10 @@ module.exports = {
     return res.json({
       id: heartBeatLog.id,
       pid: heartBeatLog.pid,
-      date: HeartBeatLog.date,
+      date: heartBeatLog.date,
       heartbeat: heartBeat.heartbeat,
-      url: HeartBeatLog.url,
-      brdate: moment(HeartBeatLog.date, ['DD:MM:YYYY']).format()
+      url: heartBeatLog.url,
+      brdate: moment(heartBeatLog.date, ['DD:MM:YYYY']).format()
     });
   },
 
