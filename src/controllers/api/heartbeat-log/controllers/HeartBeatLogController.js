@@ -23,7 +23,7 @@ module.exports = {
           date: e.date,
           heartbeat: e.heartbeat,
           url: e.url,
-          brdate: moment(e.date, ['DD:MM:YYYY']).format()
+          brdate: moment(new Date(e.date)).format('DD/MM/YYYY')
         }
     }));
   },
