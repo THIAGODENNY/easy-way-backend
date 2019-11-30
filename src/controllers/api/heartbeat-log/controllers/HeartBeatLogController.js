@@ -15,14 +15,17 @@ module.exports = {
     if(graph) {
      return returnGraph(res, heartBeatLog.reverse());
     }
-    return res.json({
-      id: heartBeatLog.id,
-      pid: heartBeatLog.pid,
-      date: heartBeatLog.date,
-      heartbeat: heartBeat.heartbeat,
-      url: heartBeatLog.url,
-      brdate: moment(heartBeatLog.date, ['DD:MM:YYYY']).format()
-    });
+    return res.json(
+      heartBeatLog.map((e) => {
+        return {
+          id: heartBeatLog.id,
+          pid: heartBeatLog.pid,
+          date: heartBeatLog.date,
+          heartbeat: heartBeat.heartbeat,
+          url: heartBeatLog.url,
+          brdate: moment(heartBeatLog.date, ['DD:MM:YYYY']).format()
+        }
+    }));
   },
 
   async store(req, res) {
