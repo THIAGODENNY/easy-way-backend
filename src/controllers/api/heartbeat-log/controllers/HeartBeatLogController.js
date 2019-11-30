@@ -18,12 +18,12 @@ module.exports = {
     return res.json(
       heartBeatLog.map((e) => {
         return {
-          id: heartBeatLog.id,
-          pid: heartBeatLog.pid,
-          date: heartBeatLog.date,
-          heartbeat: heartBeat.heartbeat,
-          url: heartBeatLog.url,
-          brdate: moment(heartBeatLog.date, ['DD:MM:YYYY']).format()
+          id: e.id,
+          pid: e.pid,
+          date: e.date,
+          heartbeat: e.heartbeat,
+          url: e.url,
+          brdate: moment(e.date, ['DD:MM:YYYY']).format()
         }
     }));
   },
