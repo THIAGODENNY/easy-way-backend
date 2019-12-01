@@ -6,6 +6,11 @@ routes.get("/schedullingsByRecordId/:id", RecordSchedullingController.showSchedu
 routes.get("/schedullingsByDate/:id/:month/:year", RecordSchedullingController.showSchedullingsByMonthYear);
 routes.get("/schedullingsByDate/:month/:year", RecordSchedullingController.showSchedullingsByMonthYear);
 routes.get("/schedullingsByDates/:month/:year", RecordSchedullingController.showSchedullingsByMonthYears);
+routes.get("/", RecordSchedullingController.index);
+routes.get("/:id", RecordSchedullingController.showById);
+routes.post("/", RecordSchedullingController.store);
+routes.put("/:id", RecordSchedullingController.update);
+routes.delete("/:id", RecordSchedullingController.destroy);
 // routes.get("/:id", RecordController.show);
 // routes.put("/:id", RecordController.update);
 // routes.post("/", RecordController.store);

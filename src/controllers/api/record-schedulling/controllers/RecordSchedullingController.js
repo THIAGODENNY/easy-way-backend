@@ -1,8 +1,60 @@
 const Record = require("../../record/model/Record");
 const Schedule = require("../../schedulling/model/Schedulling");
+const RecordSchedule = require("../model/RecordSchedulling");
 const moment = require('moment');
 
 module.exports = {
+  async index (req, res) {
+    return res.json(
+      await RecordSchedule.find({})
+    );
+  },
+  async show (req, res){
+    const { id } = req.params;
+    return res.json(
+      await RecordSchedule.find({
+        "_id": id
+      })
+    );
+  },
+  async store (req, res) {
+    const {
+      specialty, patient, medic, date, news, status, cids,
+      symptoms, diagnosis, medicNotes, prescription } = req.body;
+
+    const recordschedule = await RecordSchedule.create({
+      specialty: specialty,
+      patient: patient,
+      medic: medic,
+      date: date,
+      news: news,
+      status: status,
+      cids: cids,
+      symptoms: symptoms,
+      diagnosis: diagnosis,
+      medicNotes: medicNotes,
+      prescription: prescription
+    });
+    return res.json(recordschedule);
+  },
+  async update (req, res) {
+    const { id } = req.params;
+    const recordschedule = {
+      specialty, patient, medic, date, news, status, cids,
+      symptoms, diagnosis, medicNotes, prescription } = req.body;
+    //adiciona uma notificação no usuario
+    RecordSchedule.findByIdAndUpdate({_id: id}, recordschedule, {new: true}, function(error, model) {
+      if(error) return res.json(error);
+      return res.json(model);
+    });
+  },
+  async destroy (req, res) {
+    const { id } = req.params;
+    RecordSchedule.findByIdAndRemove({_id: id}, function(error) {
+      if(error) return res.json(error);
+      return res.json({id: id});     
+    });
+  },
   async showSchedullingsByRecordId(req, res) {
     const { id } = req.params;
     const record = await Record.findOne({_id: id});
