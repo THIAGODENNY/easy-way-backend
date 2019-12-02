@@ -24,7 +24,7 @@ Misc Endpoint
 Header example:
     Content-Type = application/json
     x-access-token = fooBar123
-    two-auth-key = 12345
+    two-auth-key = 123456
 
 Response:
     {
