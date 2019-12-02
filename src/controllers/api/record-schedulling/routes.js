@@ -10,9 +10,5 @@ routes.get("/", RecordSchedullingController.index);
 routes.post("/", RecordSchedullingController.store);
 routes.put("/:id", RecordSchedullingController.update);
 routes.delete("/:id", RecordSchedullingController.destroy);
-// routes.get("/:id", RecordController.show);
-// routes.put("/:id", RecordController.update);
-// routes.post("/", RecordController.store);
-// routes.delete("/:id", RecordController.destroy);
 
 module.exports = routes;
