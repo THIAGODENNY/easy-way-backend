@@ -7,7 +7,6 @@ routes.get("/schedullingsByDate/:id/:month/:year", RecordSchedullingController.s
 routes.get("/schedullingsByDate/:month/:year", RecordSchedullingController.showSchedullingsByMonthYear);
 routes.get("/schedullingsByDates/:month/:year", RecordSchedullingController.showSchedullingsByMonthYears);
 routes.get("/", RecordSchedullingController.index);
-routes.get("/:id", RecordSchedullingController.showById);
 routes.post("/", RecordSchedullingController.store);
 routes.put("/:id", RecordSchedullingController.update);
 routes.delete("/:id", RecordSchedullingController.destroy);
