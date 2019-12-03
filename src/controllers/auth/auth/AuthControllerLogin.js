@@ -5,6 +5,11 @@ var bodyParser = require('body-parser');
 var VerifyToken = require('./VerifyToken');
 var ReturnToken = require('./ReturnToken');
 
+const keys = require('../../../../config/keys');
+
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(keys.SENDGRID_API_KEY);
+
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 var User = require('../user/User');
@@ -67,6 +72,26 @@ router.post('/reset', function(req, res) {
     res.status(200).send({ auth: true, token: token });
   });
 
+});
+
+router.post('/resetpassword', async function(req, res) {
+  console.log(`ok`);
+  const key = (Math.floor(Math.random() * 90000) + 10000).toString();
+  const hashedPassword = bcrypt.hashSync(key, 8);
+
+  await User.findOneAndUpdate({ email: req.body.email }, { password: hashedPassword }, function(err, user) {
+    console.log(user);
+    if(!user) return res.status(401).send({message: 'Email not registered'});
+    const msg = {
+      to: user.email,
+      from: 'no-reply@vidasaudavel.com',
+      subject: 'Reset de Senha',
+      text: `Sua nova senha : ${key}`,
+      html: `<strong>Sua nova senha: ${key}</strong>`,
+    };
+    sgMail.send(msg);
+    return res.status(200).send({ message: `Email sent to ${user.email}` });
+  });
 });
 
 router.post('/register', function(req, res) {
