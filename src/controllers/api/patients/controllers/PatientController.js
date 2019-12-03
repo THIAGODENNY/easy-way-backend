@@ -6,16 +6,17 @@ module.exports = {
   },
   async show(req, res) {
     console.log('ok');
-    const doctors = await Users.find({'profile': 'patient'});
-    console.log(doctors);
-    return res.json(doctors.map((e) => {
+    const patients = await Users.find({'profile': 'patient'});
+    console.log(patients);
+    return res.json(patients.map((e) => {
       return {
         id: e.id,
         name: e.name,
         email: e.email,
         profile: e.profile,        
         specialty: e.specialty,
-        url: e.url
+        url: e.url,
+        cpf: e.cpf
       }
     } 
     ));
