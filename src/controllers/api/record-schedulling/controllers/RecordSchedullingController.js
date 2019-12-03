@@ -55,14 +55,19 @@ module.exports = {
       return res.json({id: id});     
     });
   },
-  async showSchedullingsByRecordId(req, res) {
+  async showSchedullingsByPatientId(req, res) {
     const { id } = req.params;
-    const record = await Record.findOne({_id: id});
     return res.json(
-      await Schedule.find({
-        '_id': { 
-          $in: record.schedules
-        }
+      await RecordSchedule.find({
+        'patient': id
+      })
+    );
+  },
+  async showSchedullingsByMedicId(req, res) {
+    const { id } = req.params;
+    return res.json(
+      await RecordSchedule.find({
+        'medic': id
       })
     );
   },
@@ -70,12 +75,9 @@ module.exports = {
     const { id , month, year } = req.params;
     if (id){
       try{
-      const record = await Record.findOne({ _id: id });
       return res.json(
-        await Schedule.find({
-          '_id': {
-            $in: record.schedules
-          },
+        await RecordSchedule.find({
+          'patient': id,
           'date': {
             "$regex": month+"/"+year, 
             "$options": "i"
@@ -85,7 +87,7 @@ module.exports = {
       catch{return res.json({ "message": "Record not found!"})}
     }
     return res.json(
-      await Schedule.find({
+      await RecordSchedule.find({
         'date': {
           "$regex": month+"/"+year, 
           "$options": "i"
@@ -93,16 +95,31 @@ module.exports = {
       })
     )
   },
+  // async showRecordSchedulesByMonthYear(req, res) {
+  //   const { id, month, year } = req.params;
+
+  //   if(id) {
+  //     try{
+  //       return res.json({"schedules":
+  //         await Schedule.find({
+  //           '_id': id,
+  //           'date': {
+  //             "$regex": month+"/"+year, 
+  //             "$options": "i"
+  //           }
+  //         })}
+  //       );}
+  //       catch{return res.json({ "message": "Record not found!"})}
+  //   }
+
+  // },
   async showSchedullingsByMonthYears(req, res) {
     const { id , month, year } = req.params;
     if (id){
       try{
-      const record = await Record.findOne({ _id: id });
       return res.json({"schedules":
-        await Schedule.find({
-          '_id': {
-            $in: record.schedules
-          },
+        await RecordSchedule.find({
+          '_id': id,
           'date': {
             "$regex": month+"/"+year, 
             "$options": "i"
@@ -112,7 +129,7 @@ module.exports = {
       catch{return res.json({ "message": "Record not found!"})}
     }
     return res.json({"schedules":
-        (await Schedule.find({
+        (await RecordSchedule.find({
           'date': {
             "$regex": month+"/"+year, 
             "$options": "i"
