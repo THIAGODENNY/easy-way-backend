@@ -11,10 +11,11 @@ module.exports = {
   },
   async show (req, res){
     const { id } = req.params;
-    return res.json(
-      await RecordSchedule.find({
+    return res.json({ "schedules": 
+      await RecordSchedule.findOne({
         "_id": id
       })
+    }
     );
   },
   async store (req, res) {
