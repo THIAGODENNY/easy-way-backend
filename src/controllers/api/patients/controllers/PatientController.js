@@ -26,6 +26,11 @@ module.exports = {
     const patient = await Users.find({'profile': 'patient'});
     return res.json(await patient.find({'cpf': cpf}));
   },
+  async showByName (req, res) {
+    const { name } = req.params;
+    const patient = await Users.find({'profile': 'patient'});
+    return res.json(await patient.find({'cpf': name}));
+  },
   async store(req, res) {
 
   },
