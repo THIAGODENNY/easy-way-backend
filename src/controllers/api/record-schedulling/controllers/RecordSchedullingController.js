@@ -1,6 +1,8 @@
 const Record = require("../../record/model/Record");
 const Schedule = require("../../schedulling/model/Schedulling");
 const RecordSchedule = require("../model/RecordSchedulling");
+const User = require("../../../auth/user/User");
+
 const moment = require('moment');
 
 module.exports = {
@@ -71,6 +73,12 @@ module.exports = {
         'medic': id
       })
     );
+  },
+  async showRecordScheduleAndPatient(req, res) {
+    const { id } = req.params;
+    const schedule = await RecordSchedule.findOne({ '_id': id });
+    const patient = await User.findById(schedule.patient);
+    return res.json({"schedule": schedule, "patient": patient});
   },
   async showSchedullingsByMonthYear(req, res) {
     const { id , month, year } = req.params;
