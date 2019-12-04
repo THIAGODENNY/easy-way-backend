@@ -23,13 +23,12 @@ module.exports = {
   },
   async showByCPF(req, res) {
     const { cpf } = req.params;
-    const patient = await Users.find({'profile': 'patient'});
-    return res.json(await patient.find({'cpf': cpf}));
+    return res.json(await Users.find({'profile': 'patient','cpf': cpf}));
   },
   async showByName (req, res) {
     const { name } = req.params;
-    const patient = await Users.find({'profile': 'patient'});
-    return res.json(await patient.find({'name': name}));
+    
+    return res.json(await Users.find({'profile': 'patient','name': name}));
   },
   async store(req, res) {
 
