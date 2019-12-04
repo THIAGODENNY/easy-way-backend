@@ -21,11 +21,10 @@ module.exports = {
     );
   },
   async listIndex(req, res) {
-    let array = [];
-    let a = await RecordSchedule.find({});
-    a.forEach( e => array.push([e]) );
     return res.json(
-      array
+      {
+        "schedules": await RecordSchedule.find({})
+      }
     );
   },
   async store (req, res) {
