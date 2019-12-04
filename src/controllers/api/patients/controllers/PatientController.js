@@ -21,6 +21,11 @@ module.exports = {
     } 
     ));
   },
+  async showByCPF(req, res) {
+    const { cpf } = req.params;
+    const patient = await Users.find({'profile': 'patient'});
+    return res.json(await patient.find({'cpf': cpf}));
+  },
   async store(req, res) {
 
   },
