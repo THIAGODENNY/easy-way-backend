@@ -20,6 +20,14 @@ module.exports = {
     }
     );
   },
+  async listIndex(req, res) {
+    let array = [];
+    let a = await RecordSchedule.find({});
+    a.forEach( e => array.push([e]) );
+    return res.json(
+      array
+    );
+  },
   async store (req, res) {
     const {
       specialty, patient, medic, date, news, status, cids,
@@ -46,7 +54,7 @@ module.exports = {
       specialty, patient, medic, date, news, status, cids,
       symptoms, diagnosis, medicNotes, prescription } = req.body;
     //adiciona uma notificação no usuario
-    RecordSchedule.findByIdAndUpdate({_id: id}, recordschedule, {new: true}, function(error, model) {
+      RecordSchedule.findByIdAndUpdate({_id: id}, recordschedule, {new: true}, function(error, model) {
       if(error) return res.json(error);
       return res.json(model);
     });

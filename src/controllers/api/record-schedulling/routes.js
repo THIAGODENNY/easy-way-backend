@@ -8,6 +8,7 @@ routes.get("/showRecordScheduleAndPatient/:id", RecordSchedullingController.show
 routes.get("/schedullingsByDate/:id/:month/:year", RecordSchedullingController.showSchedullingsByMonthYear);
 routes.get("/schedullingsByDate/:month/:year", RecordSchedullingController.showSchedullingsByMonthYear);
 routes.get("/schedullingsByDates/:month/:year", RecordSchedullingController.showSchedullingsByMonthYears);
+routes.get("/list", RecordSchedullingController.listIndex);
 routes.get("/", RecordSchedullingController.index);
 routes.get("/:id", RecordSchedullingController.show);
 routes.post("/", RecordSchedullingController.store);
