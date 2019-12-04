@@ -76,9 +76,9 @@ module.exports = {
   },
   async showRecordScheduleAndPatient(req, res) {
     const { id } = req.params;
-    const schedule = await RecordSchedule.findOne({ '_id': id });
+    const schedule = await RecordSchedule.findOne({ 'medic': id });
     const patient = await User.findById(schedule.patient);
-    return res.json({"schedule": schedule, "patient": patient});
+    return res.json({"schedule": [schedule], "patient": [patient]});
   },
   async showSchedullingsByMonthYear(req, res) {
     const { id , month, year } = req.params;
