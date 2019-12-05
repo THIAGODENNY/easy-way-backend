@@ -8,7 +8,7 @@ module.exports = {
     const { id } = req.params;
     return res.json(
       {
-        "patient": await Users.findOne({"_id": id})
+        "patient": [await Users.findOne({"_id": id})]
       }
     );
   },
