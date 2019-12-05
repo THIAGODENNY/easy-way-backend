@@ -4,6 +4,10 @@ module.exports = {
   async index(req, res) {
 
   },
+  async showByID(req, res){
+    const { id } = req.params;
+    return res.json(await Users.findOne({"_id": id}));
+  },
   async show(req, res) {
     console.log('ok');
     const patients = await Users.find({'profile': 'patient'});
