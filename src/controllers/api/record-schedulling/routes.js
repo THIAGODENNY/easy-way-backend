@@ -4,7 +4,7 @@ const routes = express.Router();
 
 routes.get("/schedullingsByPatientId/:id", RecordSchedullingController.showSchedullingsByPatientId);
 routes.get("/schedullingsByMedicId/:id", RecordSchedullingController.showSchedullingsByMedicId);
-routes.get("/showRecordScheduleAndPatient/:id", RecordSchedullingController.showRecordScheduleAndPatient);
+routes.get("/showSchedullingsByMedicName/:name", RecordSchedullingController.showSchedullingsByMedicName);
 routes.get("/schedullingsByDate/:id/:month/:year", RecordSchedullingController.showSchedullingsByMonthYear);
 routes.get("/schedullingsByDate/:month/:year", RecordSchedullingController.showSchedullingsByMonthYear);
 routes.get("/schedullingsByDates/:month/:year", RecordSchedullingController.showSchedullingsByMonthYears);

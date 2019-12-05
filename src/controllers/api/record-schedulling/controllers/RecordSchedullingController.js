@@ -81,16 +81,14 @@ module.exports = {
       })
     );
   },
-  async showRecordScheduleAndPatient(req, res) {
-    const { id } = req.params;
-    await RecordSchedule.find({ 'medic': id }, function(error, schedule){
-      return res.json({
-        "schedule": schedule,
-        "patient": schedule.map(function(schedule){
-          return User.findById(schedule.patient);
-        })
-      })
-    });
+  async showSchedullingsByMedicName(req, res) {
+    const { name } = req.params;
+    return res.json(
+      {
+        "schedules": await RecordSchedule.find({"medic": name})
+      }
+    );
+
   },
   async showSchedullingsByMonthYear(req, res) {
     const { id , month, year } = req.params;
