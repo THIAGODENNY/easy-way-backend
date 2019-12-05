@@ -83,18 +83,14 @@ module.exports = {
   },
   async showRecordScheduleAndPatient(req, res) {
     const { id } = req.params;
-    const schedule = await RecordSchedule.find({ 'medic': id });
-    let array = [];
-    schedule.forEach(async (e) => {
-      await User.findById(e.patient, function (error, patient) {
-        array.push({
-          "schedule": e,
-          "patient": patient
-        });
-      });
+    await RecordSchedule.find({ 'medic': id }, function(error, schedule){
+      return res.json({
+        "schedule": schedule,
+        "patient": schedule.map(function(schedule){
+          return User.findById(schedule.patient);
+        })
+      })
     });
-    // const patient = await User.findById(schedule.patient);
-    return res.json(array);
   },
   async showSchedullingsByMonthYear(req, res) {
     const { id , month, year } = req.params;
