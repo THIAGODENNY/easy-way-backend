@@ -6,7 +6,11 @@ module.exports = {
   },
   async showByID(req, res){
     const { id } = req.params;
-    return res.json(await Users.findOne({"_id": id}));
+    return res.json(
+      {
+        "patient": await Users.findOne({"_id": id})
+      }
+    );
   },
   async show(req, res) {
     console.log('ok');
