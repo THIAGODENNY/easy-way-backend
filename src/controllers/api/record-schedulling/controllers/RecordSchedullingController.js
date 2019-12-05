@@ -94,7 +94,8 @@ module.exports = {
     const { id , month, year } = req.params;
     if (id){
       try{
-      return res.json(
+      return res.json({
+        "schedules":
         await RecordSchedule.find({
           'patient': id,
           'date': {
@@ -102,16 +103,17 @@ module.exports = {
             "$options": "i"
           }
         })
+      }
       );}
       catch{return res.json({ "message": "Record not found!"})}
     }
-    return res.json(
-      await RecordSchedule.find({
+    return res.json({
+      "schedules":await RecordSchedule.find({
         'date': {
-          "$regex": month+"/"+year, 
+          "$regex": month+"/"+year,
           "$options": "i"
-        }
-      })
+        }})
+      }
     )
   },
   // async showRecordSchedulesByMonthYear(req, res) {
