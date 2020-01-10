@@ -8,7 +8,7 @@ const twoFactorAuth = require("./controllers/auth/auth/TwoFactorAuth");
 
 const routes = express.Router();
 
-routes.get("/hello", (req, res) => twoFactorAuth(req, res, HelloWorldController.index, ["medic"]));
+routes.get("/hello", (req, res) => HelloWorldController);
 routes.use("/misc", misc);
 routes.use("/auth", auth);
 routes.use("/api", api);
