@@ -1,7 +1,7 @@
 const { index } = require("./HelloWorldController");
 const httpMocks = require("node-mocks-http");
 
-test('The message should be: { message: "Hello World from Controller Test Evans with Tests, Test Igor" }', async () => {
+test('The message should be: { message: "Hello World from Controller Test Evans with Tests" }', async () => {
   const message = (await index(
     httpMocks.createRequest(),
     httpMocks.createResponse()
