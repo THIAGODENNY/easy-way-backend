@@ -8,6 +8,6 @@ test('The message should be: { message: "Hello World from Controller Test Evans 
   ))._getJSONData();
 
   expect(message).toMatchObject({
-    message: "Hello World from Controller Test Evans with Tests, Test Igor"
+    message: "Hello World from Controller Test Evans with Tests"
   });
 });
