@@ -7,8 +7,6 @@ var bodyParser = require('body-parser');
 var getRawBody = require('raw-body');
 var cors = require('cors');
 
-app.use(cors());
-
 mongoose
   .connect(keys.MONGO_URI, {
     useNewUrlParser: true,
@@ -24,6 +22,7 @@ const errorHandling = (err, req, res, next) => {
 };
 
 const app = express();
+app.use(cors());
 
 app.use(bodyParser.json());
 
