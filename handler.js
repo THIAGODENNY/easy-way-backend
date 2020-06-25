@@ -5,6 +5,7 @@ const routes = require("./src/routes");
 const keys = require("./config/keys");
 var bodyParser = require('body-parser');
 var getRawBody = require('raw-body')
+var cors = require('cors')
 
 mongoose
   .connect(keys.MONGO_URI, {
@@ -25,6 +26,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(routes);
+app.use(cors())
 
 app.use(function (req, res, next) {
   getRawBody(req, {
